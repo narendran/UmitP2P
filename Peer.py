@@ -1,3 +1,4 @@
+import sys
 import socket
 from Constants import *
 
@@ -10,7 +11,7 @@ class PeerClient:
 		self.maxpeers = MAX_PEERS
 		self.peerId = 1001 #TODO : Should think of a mechanism to make it gloally unique
 		self.IPAddr = self.getIp()
-		self.listenport = LISTEN_PORT
+		self.listenport = int(sys.argv[1])
 		self.print_peerdetails()
 		self.listenLoop()
 
@@ -37,8 +38,8 @@ class PeerClient:
 		while(1):
 			try:
 				clientsock, clientaddr = sock.accept()
-				print "New PeerConnection at - ",clientaddr
-				data = sock.recv(BUFFER_SIZE)
+				print "New PeerConnection at - ",clientaddr," with client socket :",clientsock
+				data = clientsock.recv(BUFFER_SIZE)
 				print "From PeerClient : ",data
 
 			except KeyboardInterrupt:

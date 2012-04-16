@@ -7,7 +7,7 @@ def searchPeers():
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # TODO : Using Command Line parameters for testing purpose.
-s.connect(("14.96.145.62",int(sys.argv[1])))
+s.connect(("14.96.88.106",int(sys.argv[1])))
 data = raw_input(" >> ")
 s.send(data)
 s.close()
